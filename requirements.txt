@@ -1,0 +1,7 @@
+flask
+pymongo
+transformers
+accelerate
+torch
+flask_pymongo
+markdown2

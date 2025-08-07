@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CodeMate - Explain & Debug Code</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>CodeMate: AI Code Explainer & Debugger</h1>
+
+        <form method="POST" enctype="multipart/form-data">
+            <label>Paste your code:</label>
+            <textarea name="code" rows="12" placeholder="Paste code here...">{{ code|default('') }}</textarea>
+
+            <label>Or upload a code file:</label>
+            <input type="file" name="file">
+
+            <label>Choose Summary Level:</label>
+            <select name="level">
+                <option value="simple">Beginner</option>
+                <option value="medium">Intermediate</option>
+                <option value="expert">Expert</option>
+            </select>
+
+            <button type="submit">Run & Analyze</button>
+        </form>
+
+        {% if summary %}
+        <div class="result">
+            <h2>Summary</h2>
+            <pre>{{ summary }}</pre>
+
+            <h2>Errors & Debug Suggestions</h2>
+            <pre>{{ debug }}</pre>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
